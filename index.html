@@ -20,7 +20,7 @@
                     <nav class="header-nav">
                         <a lang="en" href="" class="header-logo link">Web<span class="header-span">Studio</span></a>
                         <ul class="header-list">
-                            <li class="header-item list"><a class="header-item-list link" href="index.html">Студия</a></li>
+                            <li class="header-item list"><a class="header-item-list active link" href="index.html">Студия</a></li>
                             <li class="header-item list"><a class="header-item-list link" href="portfolio.html">Портфолио</a></li>
                             <li class="header-item list"><a class="header-item-list link" href="">Контакты</a></li>
                         </ul>
@@ -39,7 +39,7 @@
             <div class="container">
                 <h1 class="main-title">Эффективные решения для вашего бизнеса</h1>
        
-                <button type="button" class="main-btn">Заказать услугу</button>
+                <button type="button" class="main-btn" data-modal-open >Заказать услугу</button>
                
             </div>
         </section>
@@ -80,9 +80,10 @@
             <div class="container">
                 <h2 class="work-title">Чем мы занимаемся</h2>
                 <ul class="work-list list">
-                    <li class="work-item"> <img src="images/img_1.jpg" alt="кодинг" width="370" height="294"> </li>
-                    <li class="work-item"> <img src="images/img_2.jpg" alt="мобильный дизайн" width="370" height="294"> </li>
-                    <li class="work-item"> <img src="images/img_3.jpg" alt="палитра" width="370" height="294"> </li>
+                    <li class="work-item"> <div class="work-wrap"><img src="images/img_1.jpg" alt="кодинг" width="370" height="294"> 
+                        <p class="work-text">Десктопные приложения</p></div></li>
+                    <li class="work-item"> <div class="work-wrap"><img src="images/img_2.jpg" alt="мобильный дизайн" width="370" height="294"> <p class="work-text">Мобильные приложения</p></div></li>
+                    <li class="work-item"> <div class="work-wrap"><img src="images/img_3.jpg" alt="палитра" width="370" height="294"> <p class="work-text">Дизайнерские решения</p></div>  </li>
                 </ul>
             </div>
         </section>
@@ -190,5 +191,12 @@
             </div>
         </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button type="button" class="modal-close-btn" data-modal-close> <svg class="modal-close-icon" width="20" height="20"><use href="./images/icons.svg#icon-Vector"></use></svg> </button>
+        </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
 </body>
 </html>

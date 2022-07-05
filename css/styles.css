@@ -80,23 +80,60 @@ font-family: 'Raleway';
 }
 
 .header-list{
-    display: flex;
+display: flex;
 align-items: center;
 
 }
 .header-item-list {
 font-weight: 500;
-    font-size: 14px;
-    line-height: 1.14;
-    letter-spacing: 0.02em;
-    color: #212121; 
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    
+font-size: 14px;
+line-height: 1.14;
+letter-spacing: 0.02em;
+color: #212121; 
+position: relative;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+padding-bottom: 28px;
+   
 }
+
+.header-item-list:after {display: block; 
+width: 100%;
+position: absolute; 
+content: "";
+background-color: #2196F3;
+height: 0px;
+border-radius: 2px;
+opacity: 0;
+transition: opacity .2s ease;
+top: 100%;
+
+}
+
 .header-item-list:hover {
 color: #2196F3;
+
 }
 .header-item-list:focus{color: #2196F3;}
+  .header-item-list:hover::after{
+    width: 100%;
+    height: 4px;
+    opacity: 1;
+}
+.header-item-list:focus:after{
+    width: 100%;
+    height: 4px;
+    opacity: 1;
+}
+
+.active{
+    color: #2196F3;
+}
+
+.header-item-list.active:after{
+    opacity: 1;
+    height: 4px;
+    
+}
 
 .header-item:not(:last-child){
     margin-right: 50px;
@@ -277,6 +314,31 @@ margin-left: 0px;
 .work-item:not(:first-child){
     margin-left: 30px;
 }
+.work-wrap{ 
+    position: relative;
+}
+.work-text{
+position: absolute ;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 1.14;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+color: #FFFFFF;
+background-color: rgba(47, 48, 58, 0.8);
+bottom: 0;
+height: 70px;
+padding-top: 27px;
+padding-bottom: 27px;
+margin: 0;
+width: 100%;
+text-align: center;
+
+
+}
+
 
 /*------------------------TEAM-------------------*/
 .team {
@@ -590,7 +652,7 @@ letter-spacing: 0.03em;
 color: #757575;}
 
 
-/*-------PICTURES--------*/
+/*------------------------------PICTURES--------------------------------*/
 .pictures-list
 {
     display: flex;
@@ -615,6 +677,10 @@ border: 1px solid #EEEEEE;
 box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.pictures-item:hover .pictures-top-text {
+    transform: translateY(0);
+}
+
 .pictures-item:nth-child(n+7)
 {
 margin-bottom: 94px;
@@ -629,7 +695,30 @@ margin-left: 30px;
     margin-left: 30px;
 }
 
+.pictures-top-wrap{
+    position: relative;
+    overflow: hidden;
+}
 
+.pictures-top-text{
+position: absolute;
+top: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 1.56;
+letter-spacing: 0.03em;
+color: #FFFFFF;
+background-color: rgba(33, 150, 243, 0.9);
+padding-top: 63px;
+padding-bottom: 63px;
+padding-left: 24px;
+padding-right: 24px;
+height: 100%;
+transform: translateY(100%);
+transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .pictures-content{
     padding-left: 24px;
@@ -638,18 +727,50 @@ margin-left: 30px;
     padding-bottom: 20px;
 }
 
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(25, 28, 38, 0.252);
+transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1) ;
 
-
-
-/*.pictures-item{
-    padding-bottom: 30px;
 }
-/*
-.pictures-title{
-    padding-top: 20px;
-    padding-bottom: 4px;
-    padding-left: 24px;
+
+.backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0);
 }
-.pictures-after-title{
-    padding-left: 24px;
-}*/
+
+.modal{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(1);
+width: 500px;
+min-height: 600px;
+background-color: #FFFFFF; 
+border-radius: 5px;
+transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.modal-close-btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.is-hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
